@@ -8,6 +8,8 @@ class LoginPage:
         self.username_input= (By. ID, "user-name")
         self.password_input= (By. ID, "password")
         self.login_button = (By. ID, "login-button")
+        self.error_password = (By. CSS_SELECTOR, "[data-test='error']")
+
     def open(self):
         self.driver.get("https://www.saucedemo.com/")
      
@@ -25,3 +27,7 @@ class LoginPage:
         self.ingresar_usuario(usuario)
         self.ingresar_password(password)
         self.click_in_login()
+
+    def get_password_error_message(self):
+        return self.driver.find_element(*self.error_password).text
+        
