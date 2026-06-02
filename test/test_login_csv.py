@@ -5,6 +5,14 @@ import pytest
 # El archivo .csv se usara exclusivamnte para el test del login.
 
 #Aqui vamos a realizar varias pruebas (combinaciones de usuario y passwords) usando para ello la misma funcion de prueba, por esto conviene parametrizar.
+"""
+test/test_login_csv.py::test_login[user0] PASSED                                   [ 33%]
+test/test_login_csv.py::test_login[user1] PASSED                                   [ 66%]
+test/test_login_csv.py::test_login[user2] PASSED 
+[ 100%]
+"""
+
+
 
 @pytest.mark.parametrize("user", read_users_csv())
 def test_login(driver, user):
