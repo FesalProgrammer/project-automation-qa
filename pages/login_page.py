@@ -10,10 +10,10 @@ class LoginPage:
         self.login_button = (By. ID, "login-button")
         self.error_password = (By. CSS_SELECTOR, "[data-test='error']")
 
-    def open(self):
+    def open_page(self):
         self.driver.get("https://www.saucedemo.com/")
      
-    def ingresar_usuario(self, usuario):
+    def ingresar_usuario(self, usuario):# *: se llama puntero,guarda la direccion donde es encuentra la informacion.
         self.driver.find_element(*self.username_input).send_keys(usuario) 
 
     def ingresar_password(self, password):
@@ -23,11 +23,11 @@ class LoginPage:
         self.driver.find_element(*self.login_button).click()
 
     def login(self, usuario, password):
-        self.open()
+        self.open_page()
         self.ingresar_usuario(usuario)
         self.ingresar_password(password)
         self.click_in_login()
 
-    def get_password_error_message(self):
+    def get_error_message(self):
         return self.driver.find_element(*self.error_password).text
         

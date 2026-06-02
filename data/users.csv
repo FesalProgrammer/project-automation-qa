@@ -1,0 +1,4 @@
+username,password,valid
+standard_user,secret_sauce,true
+user_wrong,secret_sauce,false
+standard_user,password_wrong,false
