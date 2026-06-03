@@ -1,10 +1,10 @@
 [
   {
-    "product_name": "Sauce Labs Backpack",
-    "price": "$29.99"
+    "nombre": "Sauce Labs Backpack",
+    "precio": "$29.99"
   },
   {
-    "product_name": "Sauce Labs Bike Light",
-    "price": "$9.99"
+    "nombre": "Sauce Labs Bike Light",
+    "precio": "$9.99"
   }
 ]

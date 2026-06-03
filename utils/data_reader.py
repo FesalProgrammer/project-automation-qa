@@ -9,3 +9,4 @@ def read_users_csv():
 def read_products_json():
     with open("data/products.json") as file:
         return json.load(file)
+
