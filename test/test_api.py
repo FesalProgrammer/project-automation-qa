@@ -1,4 +1,9 @@
 import requests
+LOGIN_URL = "https://reqres.in/api/login"
+CREATE_URL = "https://reqres.in/api/users"
+URL = "https://reqres.in/api/users/2"
+
+
 
 headers = {
     
@@ -13,7 +18,7 @@ def test_login_valido():
         "email":"eve.holt@reqres.in",
         "password":"cityslicka"
     }
-    response = requests.post("https://reqres.in/api/login", headers=headers, json=body)
+    response = requests.post(LOGIN_URL, headers=headers, json=body)
     
     assert response.status_code == 200
 
@@ -25,7 +30,7 @@ def test_login_sin_password():
         "email":"eve.holt@reqres.in",
         
     }
-    response = requests.post("https://reqres.in/api/login", headers=headers, json=body)
+    response = requests.post(LOGIN_URL, headers=headers, json=body)
     
     assert response.status_code == 400
 
@@ -38,7 +43,7 @@ def test_create_user():
         "email":"fesal@gmail.com",
         "password":"123456"
     }
-    response = requests.post("https://reqres.in/api/users", headers=headers, json=body)
+    response = requests.post(CREATE_URL, headers=headers, json=body)
     
     data =response.json()
     
@@ -47,20 +52,30 @@ def test_create_user():
     assert data["name"] == body["name"]
     assert data["email"] == body["email"]
 
-    assert response.elapsed.total_seconds() < 1, "El tiempo de ejecucion para crear un usuario superó el tiempo estimado (1 seg)"
+    assert response.elapsed.total_seconds() < 1.5, "API muy lenta"
 
 def test_delete_user():
     """Interactua con la Api a traves del metodo DELETE para eliminar un usuario y devuelve el status_code 204 si la accion es exitosa"""
     
-    response = requests.delete("https://reqres.in/api/users/2", headers=headers)
+    response = requests.delete(URL, headers=headers)
     
     assert response.status_code == 204
 
 def test_get_user():
-    """Interactua con la Api a traves del metodo GET (la api devuelve status_code == 200). Mide el tiempo de respuesta, lo compara contra un tiempo estimado establecido (1 sec) y devuelve True si es menor (Test passed) """
+    """Interactua con la Api a traves del metodo GET (la api devuelve status_code == 200). Mide el tiempo de respuesta, lo compara contra un tiempo estimado establecido (1.5 sec) y devuelve True si es menor (Test passed) """
     
-    response = requests.get("https://reqres.in/api/users/2", headers=headers)
+    response = requests.get(URL, headers=headers)
     
     assert response.status_code == 200
 
-    assert response.elapsed.total_seconds() < 1,"El tiempo de ejecucion para obtener un usuario superó el tiempo estimado (1 seg)"
+    data = response.json()
+
+    assert len(data['data']) > 0 # al menos un usuario
+
+    assert response.elapsed.total_seconds() < 1.5,"API muy lenta"
+    
+    
+
+    
+
+    

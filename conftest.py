@@ -28,6 +28,7 @@ def driver_logged(driver):
 
 @pytest.hookimpl(tryfirst=True,hookwrapper=True)
 def pytest_runtest_makereport(item,call):
+    """ Captura de pantalla con error con alcance global para todas las pruebas"""
     outcome=yield
 
     report = outcome.get_result()
