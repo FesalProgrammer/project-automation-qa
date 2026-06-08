@@ -1,0 +1,47 @@
+2026-06-07 20:08:46,564 INFO Proyecto Swag Labs - Inicia prueba de test_login_valido
+2026-06-07 20:08:46,565 INFO Proyecto Swag Labs - Se envia solicitud a la Api
+2026-06-07 20:08:47,609 INFO Proyecto Swag Labs - Se valida respuesta exitosa: status_code == 200
+2026-06-07 20:08:47,609 INFO Proyecto Swag Labs - LOGIN valido completado en 1.042s
+
+2026-06-07 20:08:47,613 INFO Proyecto Swag Labs - Inicia prueba de test_login_sin_password
+2026-06-07 20:08:47,613 INFO Proyecto Swag Labs - Se preparan datos de entrada
+2026-06-07 20:08:48,541 INFO Proyecto Swag Labs - Se valida respuesta exitosa: status_code == 400
+2026-06-07 20:08:48,542 INFO Proyecto Swag Labs - LOGIN sin password completado en 0.927s
+
+2026-06-07 20:08:48,546 INFO Proyecto Swag Labs - Inicia prueba del POST test_create_user
+2026-06-07 20:08:48,546 INFO Proyecto Swag Labs - Se preparan los datos de entrada
+2026-06-07 20:08:48,546 INFO Proyecto Swag Labs - Se envia solicitud a la Api
+2026-06-07 20:08:49,452 INFO Proyecto Swag Labs - Se valida respuesta exitosa: status_code == 201
+2026-06-07 20:08:49,452 INFO Proyecto Swag Labs - Se validan campos creados
+2026-06-07 20:08:49,452 INFO Proyecto Swag Labs - POST completado en 0.905s
+
+2026-06-07 20:08:49,455 INFO Proyecto Swag Labs - Inicia prueba del DELETE test_delete_user
+2026-06-07 20:08:49,455 INFO Proyecto Swag Labs - Se envia solicitud a la Api
+2026-06-07 20:08:50,321 INFO Proyecto Swag Labs - Se valida respuesta exitosa: status_code == 204
+2026-06-07 20:08:50,321 INFO Proyecto Swag Labs - DELETE completado en 0.865s
+
+2026-06-07 20:08:50,324 INFO Proyecto Swag Labs - Inicia prueba del GET test_get_user
+2026-06-07 20:08:50,324 INFO Proyecto Swag Labs - Se envia solicitud a la Api
+2026-06-07 20:08:51,178 INFO Proyecto Swag Labs - Se valida respuesta exitosa
+2026-06-07 20:08:51,178 INFO Proyecto Swag Labs - Se valida que al menos haya un usuario
+2026-06-07 20:08:51,178 INFO Proyecto Swag Labs - Usuarios encontrados: 5 
+2026-06-07 20:08:51,178 INFO Proyecto Swag Labs - Se valida performance: tiempo de prueba < 1 segundo
+2026-06-07 20:08:51,178 INFO Proyecto Swag Labs - Validacion exitosa.
+2026-06-07 20:08:51,179 INFO Proyecto Swag Labs - GET completado en 0.853s
+
+2026-06-07 20:08:51,182 INFO Proyecto Swag Labs - Inicia prueba del PUT test_update_user
+2026-06-07 20:08:51,182 INFO Proyecto Swag Labs - Se preparan los datos
+2026-06-07 20:08:51,182 INFO Proyecto Swag Labs - Se envia solicitud a la Api
+2026-06-07 20:08:52,133 INFO Proyecto Swag Labs - Se valida respuesta exitosa: status_code == 200
+2026-06-07 20:08:52,133 INFO Proyecto Swag Labs - Se validan campos actualizados
+2026-06-07 20:08:52,133 INFO Proyecto Swag Labs - Se verifica performance
+2026-06-07 20:08:52,133 INFO Proyecto Swag Labs - Put completado en 0.951 s.
+
+2026-06-07 20:08:52,137 INFO Proyecto Swag Labs - Inicia prueba del PATCH test_patch_update_user
+2026-06-07 20:08:52,137 INFO Proyecto Swag Labs - Se preparan los datos
+2026-06-07 20:08:52,137 INFO Proyecto Swag Labs - Se envia solicitud a la Api
+2026-06-07 20:08:52,862 INFO Proyecto Swag Labs - Se valida respuesta exitosa: status_code == 200
+2026-06-07 20:08:52,862 INFO Proyecto Swag Labs - Se valida campo de title actualizado
+2026-06-07 20:08:52,862 INFO Proyecto Swag Labs - Se verifica performance
+2026-06-07 20:08:52,862 INFO Proyecto Swag Labs - Patch completado - solo titulo actualizado. Tiempo: 0.724 s.
+

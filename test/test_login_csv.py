@@ -10,7 +10,7 @@ import pytest
 
 @pytest.mark.parametrize("user", read_users_csv())
 def test_login(driver, user):
-    logger.info("Iniciando test_login_csv")
+    logger.info("Inicia test_login_csv")
     logger.info("Inicializando el driver para test_login")
     login_page = LoginPage(driver)
 
@@ -26,6 +26,6 @@ def test_login(driver, user):
 
     if "/inventory.html" in driver.current_url:
         logger.info("redireccion exitosa")
-        logger.info("Test del login completado exitosamente")
+        logger.info("Test completado exitosamente")
     else:
         logger.info(f"Redireccion fallida. URL:{ driver.current_url}" )

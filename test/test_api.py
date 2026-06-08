@@ -1,9 +1,12 @@
 import requests
+from utils.logger import logger
+
+
 LOGIN_URL = "https://reqres.in/api/login"
 CREATE_URL = "https://reqres.in/api/users"
 URL = "https://reqres.in/api/users/2"
 
-
+JSON_PLACEHOLDER_URL = "https://jsonplaceholder.typicode.com/posts/1"
 
 headers = {
     
@@ -14,68 +17,152 @@ def test_login_valido():
     """
     Interactua con la Api a traves del metodo POST para logear un usuario valido y devuelve el status_code 200 si la accion es exitosa
     """
+    logger.info("Inicia prueba de test_login_valido")
     body={
         "email":"eve.holt@reqres.in",
         "password":"cityslicka"
     }
+    logger.info("Se envia solicitud a la Api")
     response = requests.post(LOGIN_URL, headers=headers, json=body)
     
+    logger.info("Se valida respuesta exitosa: status_code == 200")
     assert response.status_code == 200
+    logger.info(f"LOGIN valido completado en {response.elapsed.total_seconds():.3f}s\n")
 
 def test_login_sin_password():
     """
     Interactua con la Api a traves del metodo POST para logear un usuario sin info del password y devuelve el status_code 400 si la accion es exitosa
     """
+    logger.info("Inicia prueba de test_login_sin_password")
+    
+    logger.info("Se preparan datos de entrada")
     body={
         "email":"eve.holt@reqres.in",
         
     }
     response = requests.post(LOGIN_URL, headers=headers, json=body)
     
+    logger.info("Se valida respuesta exitosa: status_code == 400")
     assert response.status_code == 400
+    logger.info(f"LOGIN sin password completado en {response.elapsed.total_seconds():.3f}s\n")
 
 def test_create_user():
     """
     Interactua con la Api a traves del metodo POST para crear un usuario y devuelve el status_code 201 si la accion es exitosa, tambien valida la correspondencia entre valores del json enviado como body y el json devuelto. Mide el tiempo de respuesta, lo compara contra un tiempo estimado establecido (1 sec) y devuelve True si es menor (Test passed)
     """
+    logger.info("Inicia prueba del POST test_create_user")
+    logger.info("Se preparan los datos de entrada")
     body={
         "name":"Fesal",
         "email":"fesal@gmail.com",
         "password":"123456"
     }
+    
+    logger.info("Se envia solicitud a la Api")
     response = requests.post(CREATE_URL, headers=headers, json=body)
     
     data =response.json()
     
+    logger.info("Se valida respuesta exitosa: status_code == 201")
     assert response.status_code == 201
 
+    logger.info("Se validan campos creados")
     assert data["name"] == body["name"]
     assert data["email"] == body["email"]
 
-    assert response.elapsed.total_seconds() < 1.5, "API muy lenta"
+    assert response.elapsed.total_seconds() < 1, "API muy lenta"
+    logger.info(f"POST completado en {response.elapsed.total_seconds():.3f}s\n")
 
 def test_delete_user():
     """Interactua con la Api a traves del metodo DELETE para eliminar un usuario y devuelve el status_code 204 si la accion es exitosa"""
     
+    logger.info("Inicia prueba del DELETE test_delete_user")
+    logger.info("Se envia solicitud a la Api")
     response = requests.delete(URL, headers=headers)
     
+    logger.info("Se valida respuesta exitosa: status_code == 204")
     assert response.status_code == 204
 
+    logger.info(f"DELETE completado en {response.elapsed.total_seconds():.3f}s\n")
+
 def test_get_user():
-    """Interactua con la Api a traves del metodo GET (la api devuelve status_code == 200). Mide el tiempo de respuesta, lo compara contra un tiempo estimado establecido (1.5 sec) y devuelve True si es menor (Test passed) """
+    """Interactua con la Api a traves del metodo GET (la api devuelve status_code == 200). Valida que al menos haya un usuario. Verifica performance del test midiendo el tiempo de respuesta, lo compara contra un tiempo estimado establecido en 1 seg y devuelve True si es menor (Test passed) """
     
+    logger.info("Inicia prueba del GET test_get_user")
+    
+    logger.info("Se envia solicitud a la Api")
     response = requests.get(URL, headers=headers)
     
+    logger.info(f"Se valida respuesta exitosa")
     assert response.status_code == 200
 
     data = response.json()
-
-    assert len(data['data']) > 0 # al menos un usuario
-
-    assert response.elapsed.total_seconds() < 1.5,"API muy lenta"
     
-    
+    logger.info("Se valida que al menos haya un usuario")
+    assert len(data["data"]) > 0 # al menos un usuario
+    logger.info(f"Usuarios encontrados: {len(data['data'])} ")
 
+    logger.info("Se valida performance: tiempo de prueba < 1 segundo")
+    assert response.elapsed.total_seconds() < 1, "API muy lenta"
     
+    if response.elapsed.total_seconds() < 1:
+        logger.info("Validacion exitosa.")
+        logger.info(f"GET completado en {response.elapsed.total_seconds():.3f}s\n")
+    else:
+        logger.info(f"API muy lenta: {response.elapsed.total_seconds():.3f} s.\n")
+        
+def test_update_user():
+    logger.info("Inicia prueba del PUT test_update_user")
+    logger.info("Se preparan los datos")
+    payload={
+        "userId"  : 1,
+        "id"      : 1,
+        "title"   : "Automation Testing Guide",
+        "body" : "Guía completa de testing automatizado"
+        
+    }
+        
+    logger.info("Se envia solicitud a la Api")
+    response = requests.put(JSON_PLACEHOLDER_URL, json=payload)
+    
+    logger.info("Se valida respuesta exitosa: status_code == 200")
+    assert response.status_code == 200
+    data = response.json()
+
+    logger.info("Se validan campos actualizados")
+    assert data['title'] == 'Automation Testing Guide'
+    assert data['body'] == 'Guía completa de testing automatizado'
+    assert data['id'] == 1 
+
+    logger.info("Se verifica performance")
+    assert response.elapsed.total_seconds() < 1
+
+    logger.info(f"Put completado en {response.elapsed.total_seconds():.3f} s.\n")
+
+def test_patch_update_user():
+    logger.info("Inicia prueba del PATCH test_patch_update_user")
+    logger.info("Se preparan los datos")
+    patch_payload={
+        "title" : "Titulo actualizado por PATCH"        
+    }
+        
+    logger.info("Se envia solicitud a la Api")
+    response = requests.patch(JSON_PLACEHOLDER_URL, json=patch_payload)
+    
+    logger.info("Se valida respuesta exitosa: status_code == 200")
+    assert response.status_code == 200
+    data = response.json()
+
+    logger.info("Se valida campo de title actualizado")
+    assert data['title'] == 'Titulo actualizado por PATCH'
+
+    logger.info("Se valida que el resto de campos se mantienen")
+    assert 'body' in data 
+    assert 'userId' in data
+
+    logger.info("Se verifica performance")
+    assert response.elapsed.total_seconds() < 1
+
+    logger.info(f"Patch completado - solo titulo actualizado. Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
 
     

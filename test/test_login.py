@@ -3,7 +3,7 @@ from utils.logger import logger
 
 def test_login_ok(driver):
     """ Valida login exitoso verificando que se haya redirigido a la página de inventario """
-    logger.info("Iniciando test_login_ok")
+    logger.info("Inicia test_login_ok")
     logger.info("Inicializando el driver para test_login_ok")
     login_page = LoginPage(driver)
     
@@ -21,7 +21,7 @@ def test_login_ok(driver):
 
 def test_login_invalid_password(driver):
     """ Valida manejo adecuado del error ante un intento de login usando password invalido """
-    logger.info("Iniciando test_login_invalid_password")
+    logger.info("Inicia test_login_invalid_password")
     
     logger.info("Inicializando el driver")
     login_page = LoginPage(driver)
