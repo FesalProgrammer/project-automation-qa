@@ -10,14 +10,14 @@ import pytest
 
 @pytest.mark.parametrize("user", read_users_csv())
 def test_login(driver, user):
-    logger.info("Inicia test_login_csv")
-    logger.info("Inicializando el driver para test_login")
+    logger.info("Iniciando test_login")
+    
     login_page = LoginPage(driver)
 
-    logger.info("Ingresando datos de entrada para el login")
+    logger.info("Completando credenciaes...")
     login_page.login(user["username"], user["password"])
 
-    logger.info("Verificando redireccion exitosa")
+    logger.info("Validando redireccion a pagina de inventory")
     if user["valid"] == "true":
         assert "/inventory.html" in driver.current_url, "No se redirigió al inventario"
     else:
@@ -25,7 +25,6 @@ def test_login(driver, user):
         assert "Epic sadface" in error
 
     if "/inventory.html" in driver.current_url:
-        logger.info("redireccion exitosa")
-        logger.info("Test completado exitosamente")
+        logger.info("Test de login completado exitosamente\n")
     else:
-        logger.info(f"Redireccion fallida. URL:{ driver.current_url}" )
+        logger.info(f"Redireccion fallida. URL redireccionada:{ driver.current_url}\n")

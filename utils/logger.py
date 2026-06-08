@@ -15,4 +15,4 @@ logging.basicConfig(
     force=True
 )
 
-logger = logging.getLogger("Proyecto Swag Labs")
+logger = logging.getLogger("Project Automation QA")

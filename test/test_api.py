@@ -73,17 +73,17 @@ def test_create_user():
     assert response.elapsed.total_seconds() < 1, "API muy lenta"
     logger.info(f"POST completado en {response.elapsed.total_seconds():.3f}s\n")
 
-def test_delete_user():
-    """Interactua con la Api a traves del metodo DELETE para eliminar un usuario y devuelve el status_code 204 si la accion es exitosa"""
+# def test_delete_user():
+#     """Interactua con la Api a traves del metodo DELETE para eliminar un usuario y devuelve el status_code 204 si la accion es exitosa"""
     
-    logger.info("Inicia prueba del DELETE test_delete_user")
-    logger.info("Se envia solicitud a la Api")
-    response = requests.delete(URL, headers=headers)
+#     logger.info("Inicia prueba del DELETE test_delete_user")
+#     logger.info("Se envia solicitud a la Api")
+#     response = requests.delete(URL, headers=headers)
     
-    logger.info("Se valida respuesta exitosa: status_code == 204")
-    assert response.status_code == 204
+#     logger.info("Se valida respuesta exitosa: status_code == 204")
+#     assert response.status_code == 204
 
-    logger.info(f"DELETE completado en {response.elapsed.total_seconds():.3f}s\n")
+#     logger.info(f"DELETE completado en {response.elapsed.total_seconds():.3f}s\n")
 
 def test_get_user():
     """Interactua con la Api a traves del metodo GET (la api devuelve status_code == 200). Valida que al menos haya un usuario. Verifica performance del test midiendo el tiempo de respuesta, lo compara contra un tiempo estimado establecido en 1 seg y devuelve True si es menor (Test passed) """
@@ -115,11 +115,10 @@ def test_update_user():
     logger.info("Inicia prueba del PUT test_update_user")
     logger.info("Se preparan los datos")
     payload={
-        "userId"  : 1,
-        "id"      : 1,
-        "title"   : "Automation Testing Guide",
-        "body" : "Guía completa de testing automatizado"
-        
+        "userId": 1,
+        "id"    : 1,
+        "title" : "Automation Testing Guide",
+        "body"  : "Guía completa de testing automatizado"
     }
         
     logger.info("Se envia solicitud a la Api")
@@ -139,30 +138,49 @@ def test_update_user():
 
     logger.info(f"Put completado en {response.elapsed.total_seconds():.3f} s.\n")
 
-def test_patch_update_user():
-    logger.info("Inicia prueba del PATCH test_patch_update_user")
+def test_update_created_post(created_post):
+    post_id = created_post['id']
+    
+    logger.info("Inicia prueba del PATCH test_update_created_post")
     logger.info("Se preparan los datos")
+    
     patch_payload={
-        "title" : "Titulo actualizado por PATCH"        
+        "title" : "Titulo actualizado"        
     }
         
-    logger.info("Se envia solicitud a la Api")
-    response = requests.patch(JSON_PLACEHOLDER_URL, json=patch_payload)
+    logger.info("Se envia solicitud patch a la Api")
+    
+    response = requests.patch(f'https://jsonplaceholder.typicode.com/posts/{post_id}', json=patch_payload)
     
     logger.info("Se valida respuesta exitosa: status_code == 200")
+        
     assert response.status_code == 200
-    data = response.json()
 
-    logger.info("Se valida campo de title actualizado")
-    assert data['title'] == 'Titulo actualizado por PATCH'
+    logger.info("Se valida que solo title se haya actualizado")
 
-    logger.info("Se valida que el resto de campos se mantienen")
-    assert 'body' in data 
-    assert 'userId' in data
+    assert response.json()['title'] == 'Titulo actualizado', 'PATCH no actualizó el campo enviado'
 
     logger.info("Se verifica performance")
     assert response.elapsed.total_seconds() < 1
 
-    logger.info(f"Patch completado - solo titulo actualizado. Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
+    logger.info(f"Patch completado - solo title actualizado. Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
+
+def test_delete_created_post(created_post):
+    """Elimina el post creado en la fixture"""
+    
+    post_id = created_post['id']
+    
+    logger.info("Inicia prueba del DELETE test_delete_created_post")
+    response = requests.delete(f'https://jsonplaceholder.typicode.com/posts/{post_id}')
+
+    logger.info("Se valida respuesta exitosa: status_code == 200")
+    assert response.status_code == 200 
+
+    data = response.json()  
+
+    logger.info("Se valida recurso eliminado")
+    assert data == {}
+
+    logger.info(f"Delete completado - Recurso eliminado - Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
 
     

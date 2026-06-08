@@ -1,0 +1,5 @@
+2026-06-08 12:33:45,016 INFO Proyecto Swag Labs - Inicia test_login_invalid_password
+2026-06-08 12:33:45,017 INFO Proyecto Swag Labs - Inicializando el driver
+2026-06-08 12:33:45,017 INFO Proyecto Swag Labs - Ingresando datos de entrada para el usuario del login: standar_user
+2026-06-08 12:33:45,018 INFO Proyecto Swag Labs - Ingresando datos de entrada para el password del login: 12345
+2026-06-08 12:33:47,849 INFO Proyecto Swag Labs - Se obliga al assert a fallar hardcodeando el texto de comparacion del mensaje de error con 'hola'

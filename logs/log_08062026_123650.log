@@ -1,0 +1,16 @@
+2026-06-08 12:36:54,123 INFO Proyecto Swag Labs - Inicia test_login_csv
+2026-06-08 12:36:54,125 INFO Proyecto Swag Labs - Inicializando el driver para test_login
+2026-06-08 12:36:54,127 INFO Proyecto Swag Labs - Ingresando datos de entrada para el login
+2026-06-08 12:36:56,907 INFO Proyecto Swag Labs - Verificando redireccion exitosa
+2026-06-08 12:36:56,955 INFO Proyecto Swag Labs - redireccion exitosa
+2026-06-08 12:36:56,955 INFO Proyecto Swag Labs - Test completado exitosamente
+2026-06-08 12:37:01,688 INFO Proyecto Swag Labs - Inicia test_login_csv
+2026-06-08 12:37:01,689 INFO Proyecto Swag Labs - Inicializando el driver para test_login
+2026-06-08 12:37:01,703 INFO Proyecto Swag Labs - Ingresando datos de entrada para el login
+2026-06-08 12:37:04,644 INFO Proyecto Swag Labs - Verificando redireccion exitosa
+2026-06-08 12:37:04,731 INFO Proyecto Swag Labs - Redireccion fallida. URL:https://www.saucedemo.com/
+2026-06-08 12:37:09,303 INFO Proyecto Swag Labs - Inicia test_login_csv
+2026-06-08 12:37:09,304 INFO Proyecto Swag Labs - Inicializando el driver para test_login
+2026-06-08 12:37:09,304 INFO Proyecto Swag Labs - Ingresando datos de entrada para el login
+2026-06-08 12:37:12,014 INFO Proyecto Swag Labs - Verificando redireccion exitosa
+2026-06-08 12:37:12,087 INFO Proyecto Swag Labs - Redireccion fallida. URL:https://www.saucedemo.com/

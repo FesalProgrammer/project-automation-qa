@@ -4,6 +4,7 @@ from pages.login_page import LoginPage
 from utils.data_reader import read_users_csv
 import pathlib
 import pytest_html
+import requests
 
 
 
@@ -53,3 +54,16 @@ def pytest_runtest_makereport(item,call):
             extras = getattr(report, "extras", [])
             extras.append(pytest_html.extras.png(str(file_name)))
             report.extras = extras
+
+@pytest.fixture(scope='module')
+def created_post():
+    """Crea un post y devuelve sus datos para otros tests"""
+    
+    payload = {
+    'title': 'Post para testing',
+    'body': 'Contenido de prueba',
+    'userId': 1
+    }
+    response = requests.post('https://jsonplaceholder.typicode.com/posts', json=payload)
+    assert response.status_code == 201
+    return response.json()
