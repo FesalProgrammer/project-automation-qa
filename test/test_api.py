@@ -73,18 +73,6 @@ def test_create_user():
     assert response.elapsed.total_seconds() < 1, "API muy lenta"
     logger.info(f"POST completado en {response.elapsed.total_seconds():.3f}s\n")
 
-# def test_delete_user():
-#     """Interactua con la Api a traves del metodo DELETE para eliminar un usuario y devuelve el status_code 204 si la accion es exitosa"""
-    
-#     logger.info("Inicia prueba del DELETE test_delete_user")
-#     logger.info("Se envia solicitud a la Api")
-#     response = requests.delete(URL, headers=headers)
-    
-#     logger.info("Se valida respuesta exitosa: status_code == 204")
-#     assert response.status_code == 204
-
-#     logger.info(f"DELETE completado en {response.elapsed.total_seconds():.3f}s\n")
-
 def test_get_user():
     """Interactua con la Api a traves del metodo GET (la api devuelve status_code == 200). Valida que al menos haya un usuario. Verifica performance del test midiendo el tiempo de respuesta, lo compara contra un tiempo estimado establecido en 1 seg y devuelve True si es menor (Test passed) """
     

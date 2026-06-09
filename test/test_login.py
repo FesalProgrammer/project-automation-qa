@@ -12,6 +12,7 @@ def test_login_ok(driver):
 
     logger.info("Validando redireccion exitosa")
     assert "/inventory.html" in driver.current_url, "No se redirigió al inventario"
+    
     if "/inventory.html" in driver.current_url:
         logger.info("Redireccion exitosa")
         logger.info("Test del login_ok completado exitosamente")

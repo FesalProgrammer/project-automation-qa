@@ -3,10 +3,6 @@ from utils.data_reader import read_users_csv
 from utils.logger import logger
 import pytest
 
-# El archivo .csv se usara exclusivamnte para el test del login.
-
-#Aqui vamos a realizar varias pruebas (combinaciones de usuario y passwords) usando para ello la misma funcion de prueba, por esto conviene parametrizar.
-
 
 @pytest.mark.parametrize("user", read_users_csv())
 def test_login(driver, user):
