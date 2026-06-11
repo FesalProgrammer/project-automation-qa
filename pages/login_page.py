@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from utils.logger import logger
 
 class LoginPage:
     def __init__(self, driver):#Constructor ejecuta la clase cuando sea llamada
@@ -11,8 +12,11 @@ class LoginPage:
         self.error_password = (By. CSS_SELECTOR, "[data-test='error']")
 
     def open_page(self):
-        self.driver.get("https://www.saucedemo.com/")
-     
+        try:
+            self.driver.get("https://www.saucedemo.com/")
+        except:
+            logger.critical("No se pudo conectar al link de la pagina")
+
     def ingresar_usuario(self, usuario):# *: se llama puntero,guarda la direccion donde es encuentra la informacion.
         self.driver.find_element(*self.username_input).send_keys(usuario) 
 

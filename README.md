@@ -2,7 +2,7 @@
 
 ## Proposito del proyecto:
 
-Este repositorio contiene el framework de pruebas automatizadas diseñado para validar la aplicación Swag Labs (`www.saucedemo.com`, `https://jsonplaceholder.typicode.com`) tanto la interfaz de usuario (UI) como las capas de servicio (API) de forma eficiente, escalable y mantenible. El proyecto implementa el patrón Page Object Model (POM) para UI y un enfoque Data-Driven para las pruebas de API.
+Este repositorio contiene el framework de pruebas automatizadas diseñadas para validar la aplicación Swag Labs (`www.saucedemo.com`) en la parte correspondiente a la interfaz de usuario (UI)y JsonPlaceHolder ( `https://jsonplaceholder.typicode.com`) para las capas de servicio (API) de forma eficiente, escalable y mantenible. El proyecto implementa el patrón Page Object Model (POM) para UI y un enfoque Data-Driven para las pruebas de API.
 
 ## Características Principales
 

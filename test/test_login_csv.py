@@ -23,4 +23,4 @@ def test_login(driver, user):
     if "/inventory.html" in driver.current_url:
         logger.info("Test de login completado exitosamente\n")
     else:
-        logger.info(f"Redireccion fallida. URL redireccionada:{ driver.current_url}\n")
+        logger.error(f"Redireccion fallida. URL redireccionada:{ driver.current_url}\n")
