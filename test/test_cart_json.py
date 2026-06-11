@@ -32,4 +32,4 @@ def test_cart_json(driver_logged):
         
         assert encontrado, f"Producto incorrecto o faltante: {producto_json["nombre"]}"
     
-    logger.info("test_cart_json completado\n")
+    logger.info("test_cart_json completado exitosamente\n")

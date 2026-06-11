@@ -16,11 +16,8 @@ def test_login(driver, user):
     logger.info("Validando redireccion a pagina de inventory")
     if user["valid"] == "true":
         assert "/inventory.html" in driver.current_url, "No se redirigió al inventario"
+        logger.info("Test completado exitosamente")
     else:
         error = login_page.get_error_message()
         assert "Epic sadface" in error
-
-    if "/inventory.html" in driver.current_url:
-        logger.info("Test de login completado exitosamente\n")
-    else:
-        logger.error(f"Redireccion fallida. URL redireccionada:{ driver.current_url}\n")
+        logger.info("Test completado exitosamente")

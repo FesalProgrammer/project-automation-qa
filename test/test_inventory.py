@@ -16,7 +16,7 @@ def test_inventory_title(driver_logged):
     titulo = inventory_page.obtener_titulo()
     assert titulo == "Swag Labs", "Titulo no coincide"
     
-    logger.info("test_inventory_title completado\n")
+    logger.info("test_inventory_title completado exitosamente\n")
 
 def test_products_visibles(driver_logged):
     """ Comprueba existan productos visibles en la página (al menos verifica la presencia de uno)."""
@@ -28,7 +28,7 @@ def test_products_visibles(driver_logged):
     productos = inventory_page.obtener_productos()
     assert len(productos) > 0, "Ausencia de productos"
     
-    logger.info("test completado\n")
+    logger.info("Test completado exitosamente\n")
 
 def test_ui_elements(driver_logged):
     """ Valida elementos importantes de la interfaz presentes (menú, filtros, etc.)."""
@@ -42,4 +42,4 @@ def test_ui_elements(driver_logged):
     logger.info("Validando presencia del filtro")
     assert inventory_page.filtro_visible(), "El filtro del catalogo no esta presente en la pagina."
 
-    logger.info("test completado\n")
+    logger.info("Test completado exitosamente\n")

@@ -31,5 +31,5 @@ def test_cart(driver_logged):
 
     logger.info("Validando que el producto agregado al carrito sea el correcto ")
     assert cart_item == product_name, "El producto agregado no coincide"
-    logger.info("test_cart completado\n")
+    logger.info("test_cart completado exitosamnete\n")
     

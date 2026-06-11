@@ -13,7 +13,7 @@ def test_login_ok(driver):
     logger.info("Validando redireccion exitosa")
     try:
         assert "/inventory.html" in driver.current_url, "No se redirigió al inventario"
-        logger.info("Test completado")
+        logger.info("Test completado exitosamente")
     except AssertionError as e:
         logger.error(f"No se pudo entrar correctamente, URL actual {driver.current_url}")
         logger.error(e)
@@ -32,7 +32,7 @@ def test_login_invalid_password(driver):
     error = login_page.get_error_message()
 
     assert "Epic sadface: Username and password do not match any user in this service" in error
-    logger.info("Test completado")
+    logger.info("Test completado exitosamente")
 
 def test_login_invalid_user(driver):
     """ Valida manejo adecuado del error ante un intento de login usando un user invalido """
@@ -47,10 +47,8 @@ def test_login_invalid_user(driver):
     error = login_page.get_error_message()
 
     assert "Epic sadface: Username and password do not match any user in this service" in error
-    logger.info("Test completado")
+    logger.info("Test completado exitosamente")
 
-    #Epic sadface: Username is required
-    
 def test_login_user_empty(driver):
     """ Valida manejo adecuado del error ante un intento de login con un user vacio """
     
@@ -64,7 +62,7 @@ def test_login_user_empty(driver):
     error = login_page.get_error_message()
 
     assert "Epic sadface: Username is required" in error
-    logger.info("Test completado")
+    logger.info("Test completado exitosamente")
 
 def test_login_no_user_no_password(driver):
     """ Valida manejo adecuado del error ante un intento de login con un user vacio y password vacio """
@@ -79,4 +77,4 @@ def test_login_no_user_no_password(driver):
     error = login_page.get_error_message()
 
     assert "Epic sadface: Username is required" in error
-    logger.info("Test completado")
+    logger.info("Test completado exitosamente")

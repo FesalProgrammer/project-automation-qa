@@ -93,7 +93,7 @@ def test_get_user():
     
     if response.elapsed.total_seconds() < 1:
         logger.info("Validacion exitosa.")
-        logger.info(f"GET completado en {response.elapsed.total_seconds():.3f}s\n")
+        logger.info(f"GET completado exitosamente en {response.elapsed.total_seconds():.3f}s\n")
     else:
         logger.info(f"API muy lenta: {response.elapsed.total_seconds():.3f} s.\n")
         
@@ -148,7 +148,7 @@ def test_update_created_post(created_post):
     logger.info("Se verifica performance")
     assert response.elapsed.total_seconds() < 1
 
-    logger.info(f"Test completado - solo title actualizado. Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
+    logger.info(f"Test completado exitosamente - solo title actualizado. Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
 
 def test_delete_created_post(created_post):
     """Elimina el post creado en la fixture"""
@@ -166,6 +166,6 @@ def test_delete_created_post(created_post):
     logger.info("Se valida recurso eliminado")
     assert data == {}
 
-    logger.info(f"Test completado - Recurso eliminado - Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
+    logger.info(f"Test completado exitosamente - Recurso eliminado - Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
 
     
