@@ -1,0 +1,45 @@
+2026-06-12 09:51:46,773 INFO Project Automation QA - Iniciando test_login_valido
+2026-06-12 09:51:48,043 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-12 09:51:48,043 INFO Project Automation QA - Test completado en 1.152s
+
+2026-06-12 09:51:48,048 INFO Project Automation QA - Iniciando test_login_sin_password
+2026-06-12 09:51:48,048 INFO Project Automation QA - Se preparan datos de entrada
+2026-06-12 09:51:48,883 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 400
+2026-06-12 09:51:48,883 INFO Project Automation QA - Test completado en 0.835s
+
+2026-06-12 09:51:48,888 INFO Project Automation QA - Iniciando test_create_user
+2026-06-12 09:51:48,888 INFO Project Automation QA - Preparando datos de entrada...
+2026-06-12 09:51:49,741 INFO Project Automation QA - Validando respuesta exitosa: status_code == 201
+2026-06-12 09:51:49,741 INFO Project Automation QA - Validando presencia de un '@' en el texto del email
+2026-06-12 09:51:49,741 INFO Project Automation QA - Validando presencia de simbolos especiales en el password
+2026-06-12 09:51:49,741 INFO Project Automation QA - Validando campos creados
+2026-06-12 09:51:49,741 INFO Project Automation QA - Test completado en 0.852s
+
+2026-06-12 09:51:49,744 INFO Project Automation QA - Iniciando test_get_user
+2026-06-12 09:51:50,570 INFO Project Automation QA - Se valida respuesta exitosa
+2026-06-12 09:51:50,570 INFO Project Automation QA - Se valida que al menos haya un usuario
+2026-06-12 09:51:50,571 INFO Project Automation QA - Usuarios encontrados: 5 
+2026-06-12 09:51:50,571 INFO Project Automation QA - Se valida performance: tiempo de prueba < 1 segundo
+2026-06-12 09:51:50,571 INFO Project Automation QA - Validacion exitosa.
+2026-06-12 09:51:50,571 INFO Project Automation QA - GET completado exitosamente en 0.825s
+
+2026-06-12 09:51:50,574 INFO Project Automation QA - Iniciando test_update_user
+2026-06-12 09:51:50,574 INFO Project Automation QA - Preparando datos de entragda...
+2026-06-12 09:51:51,362 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-12 09:51:51,362 INFO Project Automation QA - Se validan campos actualizados
+2026-06-12 09:51:51,362 INFO Project Automation QA - Se verifica performance
+2026-06-12 09:51:51,362 INFO Project Automation QA - Test completado en 0.787 s.
+
+2026-06-12 09:51:52,017 INFO Project Automation QA - Iniciando test_update_created_post
+2026-06-12 09:51:52,018 INFO Project Automation QA - Preparando datos de entrada...
+2026-06-12 09:51:52,018 INFO Project Automation QA - Se envia solicitud patch a la Api
+2026-06-12 09:51:52,724 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-12 09:51:52,724 INFO Project Automation QA - Se valida que solo title se haya actualizado
+2026-06-12 09:51:52,724 INFO Project Automation QA - Se verifica performance
+2026-06-12 09:51:52,724 INFO Project Automation QA - Test completado exitosamente - solo title actualizado. Tiempo alcanzado: 0.706 s.
+
+2026-06-12 09:51:52,727 INFO Project Automation QA - Iniciando test_delete_created_post
+2026-06-12 09:51:53,378 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-12 09:51:53,378 INFO Project Automation QA - Se valida recurso eliminado
+2026-06-12 09:51:53,378 INFO Project Automation QA - Test completado exitosamente - Recurso eliminado - Tiempo alcanzado: 0.650 s.
+

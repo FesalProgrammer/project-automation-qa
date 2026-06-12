@@ -51,11 +51,13 @@ def test_create_user():
     Interactua con la Api a traves del metodo POST para crear un usuario y devuelve el status_code 201 si la accion es exitosa, tambien valida la correspondencia entre valores del json enviado como body y el json devuelto. Mide el tiempo de respuesta, lo compara contra un tiempo estimado establecido (1 sec) y devuelve True si es menor (Test passed)
     """
     logger.info("Iniciando test_create_user")
+    
     logger.info("Preparando datos de entrada...")
+    
     body={
         "name":"Fesal",
         "email":"fesal@gmail.com",
-        "password":"123456"
+        "password":"12345*"
     }
     
     response = requests.post(CREATE_URL, headers=headers, json=body)
@@ -64,6 +66,12 @@ def test_create_user():
     
     logger.info("Validando respuesta exitosa: status_code == 201")
     assert response.status_code == 201
+
+    logger.info("Validando presencia de un '@' en el texto del email")
+    assert body["email"].count("@") == 1, "cantidad inadecuada de '@'"
+
+    logger.info("Validando presencia de simbolos especiales en el password")
+    assert "*" in body["password"], "No se encuentra el asterisco"
 
     logger.info("Validando campos creados")
     assert data["name"] == body["name"]
