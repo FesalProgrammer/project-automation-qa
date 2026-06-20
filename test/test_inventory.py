@@ -18,6 +18,7 @@ def test_inventory_title(driver_logged):
     
     logger.info("test_inventory_title completado exitosamente\n")
 
+@pytest.mark.smoke
 def test_products_visibles(driver_logged):
     """ Comprueba existan productos visibles en la página (al menos verifica la presencia de uno)."""
     

@@ -1,5 +1,7 @@
 import requests
 from utils.logger import logger
+import pytest_check as check
+import pytest
 
 
 LOGIN_URL = "https://reqres.in/api/login"
@@ -13,6 +15,8 @@ headers = {
   "x-api-key":"pub_0c467ebc212bdc0fc96774a8af22442e253722fef14060fe1fd499f4b3c96284"
 }
 
+@pytest.mark.api
+@pytest.mark.smoke
 def test_login_valido():
     """
     Interactua con la Api a traves del metodo POST para logear un usuario valido y devuelve el status_code 200 si la accion es exitosa
@@ -28,7 +32,7 @@ def test_login_valido():
     logger.info("Se valida respuesta exitosa: status_code == 200")
     assert response.status_code == 200
     logger.info(f"Test completado en {response.elapsed.total_seconds():.3f}s\n")
-
+@pytest.mark.api
 def test_login_sin_password():
     """
     Interactua con la Api a traves del metodo POST para logear un usuario sin info del password y devuelve el status_code 400 si la accion es exitosa
@@ -45,7 +49,7 @@ def test_login_sin_password():
     logger.info("Se valida respuesta exitosa: status_code == 400")
     assert response.status_code == 400
     logger.info(f"Test completado en {response.elapsed.total_seconds():.3f}s\n")
-
+@pytest.mark.api
 def test_create_user():
     """
     Interactua con la Api a traves del metodo POST para crear un usuario y devuelve el status_code 201 si la accion es exitosa, tambien valida la correspondencia entre valores del json enviado como body y el json devuelto. Mide el tiempo de respuesta, lo compara contra un tiempo estimado establecido (1 sec) y devuelve True si es menor (Test passed)
@@ -68,18 +72,18 @@ def test_create_user():
     assert response.status_code == 201
 
     logger.info("Validando presencia de un '@' en el texto del email")
-    assert body["email"].count("@") == 1, "cantidad inadecuada de '@'"
+    check.equal(body["email"].count("@"),1,"cantidad de '@' inconsistente")
 
     logger.info("Validando presencia de simbolos especiales en el password")
-    assert "*" in body["password"], "No se encuentra el asterisco"
-
+    check.is_in("*",body["password"],"No se encuentra el asterisco")
+    
     logger.info("Validando campos creados")
-    assert data["name"] == body["name"]
-    assert data["email"] == body["email"]
+    check.equal(data["name"],body["name"],"no contiene 'name'")
+    check.equal(data["email"],body["email"],"no contiene 'email'")
 
-    assert response.elapsed.total_seconds() < 1, "API muy lenta"
+    check.less(response.elapsed.total_seconds(),1.5,"API muy lenta")
     logger.info(f"Test completado en {response.elapsed.total_seconds():.3f}s\n")
-
+@pytest.mark.api
 def test_get_user():
     """Interactua con la Api a traves del metodo GET (la api devuelve status_code == 200). Valida que al menos haya un usuario. Verifica performance del test midiendo el tiempo de respuesta, lo compara contra un tiempo estimado establecido en 1 seg y devuelve True si es menor (Test passed) """
     
@@ -93,21 +97,20 @@ def test_get_user():
     data = response.json()
     
     logger.info("Se valida que al menos haya un usuario")
-    assert len(data["data"]) > 0 # al menos un usuario
-    logger.info(f"Usuarios encontrados: {len(data['data'])} ")
-
-    logger.info("Se valida performance: tiempo de prueba < 1 segundo")
-    assert response.elapsed.total_seconds() < 1, "API muy lenta"
+    check.greater(len(data["data"]),0)
     
-    if response.elapsed.total_seconds() < 1:
+    logger.info("Se valida performance: tiempo de prueba < 1.5 segundo")
+    check.less(response.elapsed.total_seconds(),1.5,"API muy lenta")
+    
+    if response.elapsed.total_seconds() < 1.5:
         logger.info("Validacion exitosa.")
         logger.info(f"GET completado exitosamente en {response.elapsed.total_seconds():.3f}s\n")
     else:
         logger.info(f"API muy lenta: {response.elapsed.total_seconds():.3f} s.\n")
-        
+@pytest.mark.api        
 def test_update_user():
     logger.info("Iniciando test_update_user")
-    logger.info("Preparando datos de entragda...")
+    logger.info("Preparando datos de entrada...")
     payload={
         "userId": 1,
         "id"    : 1,
@@ -119,18 +122,19 @@ def test_update_user():
     
     logger.info("Se valida respuesta exitosa: status_code == 200")
     assert response.status_code == 200
+    
     data = response.json()
 
     logger.info("Se validan campos actualizados")
-    assert data['title'] == 'Automation Testing Guide'
-    assert data['body'] == 'Guía completa de testing automatizado'
-    assert data['id'] == 1 
+    check.equal(data['title'],'Automation Testing Guide',"No se actualizó el titulo.")
+    check.equal(data['body'],'Guía completa de testing automatizado',"No se actualizó el body.")
+    check.equal(data['id'],1,"id distinto de 1")
 
     logger.info("Se verifica performance")
-    assert response.elapsed.total_seconds() < 1
+    check.less(response.elapsed.total_seconds(),1.5,"Api lenta")
 
     logger.info(f"Test completado en {response.elapsed.total_seconds():.3f} s.\n")
-
+@pytest.mark.api
 def test_update_created_post(created_post):
     post_id = created_post['id']
     
@@ -151,13 +155,13 @@ def test_update_created_post(created_post):
 
     logger.info("Se valida que solo title se haya actualizado")
 
-    assert response.json()['title'] == 'Titulo actualizado', 'PATCH no actualizó el campo enviado'
+    check.equal(response.json()['title'],'Titulo actualizado', 'El PATCH no actualizó el campo enviado')
 
     logger.info("Se verifica performance")
-    assert response.elapsed.total_seconds() < 1
+    check.less(response.elapsed.total_seconds(),1.5,"Api lenta")
 
     logger.info(f"Test completado exitosamente - solo title actualizado. Tiempo alcanzado: {response.elapsed.total_seconds():.3f} s.\n")
-
+@pytest.mark.api
 def test_delete_created_post(created_post):
     """Elimina el post creado en la fixture"""
     

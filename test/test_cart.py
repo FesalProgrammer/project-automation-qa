@@ -4,6 +4,7 @@ from utils.logger import logger
 import pytest
 
 
+@pytest.mark.smoke
 def test_cart(driver_logged):
     """ 
     Agrega un producto al carrito haciendo clic en el botón correspondiente.

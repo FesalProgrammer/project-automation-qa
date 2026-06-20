@@ -1,6 +1,8 @@
 from pages.login_page import LoginPage
 from utils.logger import logger
+import pytest
 
+@pytest.mark.smoke
 def test_login_ok(driver):
     """ Valida login exitoso verificando que se haya redirigido a la página de inventario """
     
