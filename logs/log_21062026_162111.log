@@ -1,0 +1,114 @@
+2026-06-21 16:21:12,555 INFO Project Automation QA - Iniciando test_login_valido
+2026-06-21 16:21:13,506 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-21 16:21:13,506 INFO Project Automation QA - Test completado en 0.948s
+
+2026-06-21 16:21:13,510 INFO Project Automation QA - Iniciando test_login_sin_password
+2026-06-21 16:21:13,510 INFO Project Automation QA - Se preparan datos de entrada
+2026-06-21 16:21:14,375 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 400
+2026-06-21 16:21:14,376 INFO Project Automation QA - Test completado en 0.865s
+
+2026-06-21 16:21:14,395 INFO Project Automation QA - Iniciando test_create_user
+2026-06-21 16:21:14,395 INFO Project Automation QA - Preparando datos de entrada...
+2026-06-21 16:21:15,253 INFO Project Automation QA - Validando respuesta exitosa: status_code == 201
+2026-06-21 16:21:15,253 INFO Project Automation QA - Validando presencia de un '@' en el texto del email
+2026-06-21 16:21:15,253 INFO Project Automation QA - Validando presencia de simbolos especiales en el password
+2026-06-21 16:21:15,253 INFO Project Automation QA - Validando campos creados
+2026-06-21 16:21:15,253 INFO Project Automation QA - Test completado en 0.857s
+
+2026-06-21 16:21:15,257 INFO Project Automation QA - Iniciando test_get_user
+2026-06-21 16:21:16,095 INFO Project Automation QA - Se valida respuesta exitosa
+2026-06-21 16:21:16,095 INFO Project Automation QA - Se valida que al menos haya un usuario
+2026-06-21 16:21:16,095 INFO Project Automation QA - Se valida performance: tiempo de prueba < 1.5 segundo
+2026-06-21 16:21:16,095 INFO Project Automation QA - Validacion exitosa.
+2026-06-21 16:21:16,095 INFO Project Automation QA - GET completado exitosamente en 0.837s
+
+2026-06-21 16:21:16,099 INFO Project Automation QA - Iniciando test_update_user
+2026-06-21 16:21:16,099 INFO Project Automation QA - Preparando datos de entrada...
+2026-06-21 16:21:18,469 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-21 16:21:18,470 INFO Project Automation QA - Se validan campos actualizados
+2026-06-21 16:21:18,471 INFO Project Automation QA - Se verifica performance
+2026-06-21 16:21:19,792 INFO Project Automation QA - Test completado en 2.368 s.
+
+2026-06-21 16:21:21,131 INFO Project Automation QA - Iniciando test_update_created_post
+2026-06-21 16:21:21,131 INFO Project Automation QA - Preparando datos de entrada...
+2026-06-21 16:21:21,132 INFO Project Automation QA - Se envia solicitud patch a la Api
+2026-06-21 16:21:22,040 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-21 16:21:22,040 INFO Project Automation QA - Se valida que solo title se haya actualizado
+2026-06-21 16:21:22,040 INFO Project Automation QA - Se verifica performance
+2026-06-21 16:21:22,040 INFO Project Automation QA - Test completado exitosamente - solo title actualizado. Tiempo alcanzado: 0.907 s.
+
+2026-06-21 16:21:22,047 INFO Project Automation QA - Iniciando test_delete_created_post
+2026-06-21 16:21:23,120 INFO Project Automation QA - Se valida respuesta exitosa: status_code == 200
+2026-06-21 16:21:23,121 INFO Project Automation QA - Se valida recurso eliminado
+2026-06-21 16:21:23,121 INFO Project Automation QA - Test completado exitosamente - Recurso eliminado - Tiempo alcanzado: 1.073 s.
+
+2026-06-21 16:21:28,099 INFO Project Automation QA - Iniciando sesion en test_cart
+2026-06-21 16:21:28,099 INFO Project Automation QA - Agregando un producto al carrito
+2026-06-21 16:21:28,308 INFO Project Automation QA - Validando incremento del contador
+2026-06-21 16:21:28,377 INFO Project Automation QA - Obteniendo el nombre del primer producto cargado
+2026-06-21 16:21:28,694 INFO Project Automation QA - Obteniendo el nombre del producto subido al carrito
+2026-06-21 16:21:28,802 INFO Project Automation QA - Validando que el producto agregado al carrito sea el correcto 
+2026-06-21 16:21:28,802 INFO Project Automation QA - test_cart completado exitosamnete
+
+2026-06-21 16:21:36,288 INFO Project Automation QA - Iniciando prueba de test_cart_json
+2026-06-21 16:21:36,293 INFO Project Automation QA - Agregando productos al carrito
+2026-06-21 16:21:37,072 INFO Project Automation QA - Validando que nombre producto y precio se cargan correctamnte en el carrito
+2026-06-21 16:21:37,073 INFO Project Automation QA - test_cart_json completado exitosamente
+
+2026-06-21 16:21:42,200 INFO Project Automation QA - Iniciando sesion en test_inventory_title
+2026-06-21 16:21:42,200 INFO Project Automation QA - Validando titulo de la pagina
+2026-06-21 16:21:42,207 INFO Project Automation QA - test_inventory_title completado exitosamente
+
+2026-06-21 16:21:49,394 INFO Project Automation QA - Iniciando sesion en test_products_visible
+2026-06-21 16:21:49,394 INFO Project Automation QA - Validandp la presencia de al menos un producto
+2026-06-21 16:21:49,434 INFO Project Automation QA - Test completado exitosamente
+
+2026-06-21 16:21:56,013 INFO Project Automation QA - Iniciando test_ui_elements
+2026-06-21 16:21:56,013 INFO Project Automation QA - Validando presencia del icono del menu
+2026-06-21 16:21:56,117 INFO Project Automation QA - Validando presencia del filtro
+2026-06-21 16:21:56,182 INFO Project Automation QA - Test completado exitosamente
+
+2026-06-21 16:22:00,581 INFO Project Automation QA - Iniciando test_login_ok
+2026-06-21 16:22:00,582 INFO Project Automation QA - Completando credenciales...
+2026-06-21 16:22:02,457 INFO Project Automation QA - Validando redireccion exitosa
+2026-06-21 16:22:02,481 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:06,704 INFO Project Automation QA - Iniciando test_login_invalid_password
+2026-06-21 16:22:06,705 INFO Project Automation QA - Completando credenciales con password invalido...
+2026-06-21 16:22:07,987 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:10,917 INFO Project Automation QA - Iniciando test_login_invalid_user
+2026-06-21 16:22:10,917 INFO Project Automation QA - Completando credenciales con user invalido...
+2026-06-21 16:22:12,133 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:15,767 INFO Project Automation QA - Iniciando test_login_user_empty
+2026-06-21 16:22:15,768 INFO Project Automation QA - Completando credenciales con user invalido...
+2026-06-21 16:22:17,009 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:21,202 INFO Project Automation QA - Iniciando test_login_no_user_no_passqord
+2026-06-21 16:22:21,203 INFO Project Automation QA - Dejando credenciales vacias...
+2026-06-21 16:22:23,931 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:28,397 INFO Project Automation QA - Iniciando test_login
+2026-06-21 16:22:28,397 INFO Project Automation QA - Completando credenciaes...
+2026-06-21 16:22:30,389 INFO Project Automation QA - Validando redireccion a pagina de inventory
+2026-06-21 16:22:30,411 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:34,888 INFO Project Automation QA - Iniciando test_login
+2026-06-21 16:22:34,889 INFO Project Automation QA - Completando credenciaes...
+2026-06-21 16:22:36,703 INFO Project Automation QA - Validando redireccion a pagina de inventory
+2026-06-21 16:22:36,755 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:41,260 INFO Project Automation QA - Iniciando test_login
+2026-06-21 16:22:41,261 INFO Project Automation QA - Completando credenciaes...
+2026-06-21 16:22:42,659 INFO Project Automation QA - Validando redireccion a pagina de inventory
+2026-06-21 16:22:42,684 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:45,913 INFO Project Automation QA - Iniciando test_login
+2026-06-21 16:22:45,913 INFO Project Automation QA - Completando credenciaes...
+2026-06-21 16:22:47,097 INFO Project Automation QA - Validando redireccion a pagina de inventory
+2026-06-21 16:22:47,103 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:51,190 INFO Project Automation QA - Iniciando test_login
+2026-06-21 16:22:51,192 INFO Project Automation QA - Completando credenciaes...
+2026-06-21 16:22:54,669 INFO Project Automation QA - Validando redireccion a pagina de inventory
+2026-06-21 16:22:54,730 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:22:59,594 INFO Project Automation QA - Iniciando test_login
+2026-06-21 16:22:59,594 INFO Project Automation QA - Completando credenciaes...
+2026-06-21 16:23:01,363 INFO Project Automation QA - Validando redireccion a pagina de inventory
+2026-06-21 16:23:01,421 INFO Project Automation QA - Test completado exitosamente
+2026-06-21 16:23:05,786 INFO Project Automation QA - Iniciando test_login
+2026-06-21 16:23:05,787 INFO Project Automation QA - Completando credenciaes...
+2026-06-21 16:23:07,541 INFO Project Automation QA - Validando redireccion a pagina de inventory
+2026-06-21 16:23:07,594 INFO Project Automation QA - Test completado exitosamente
